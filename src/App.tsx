@@ -1,11 +1,26 @@
 import { useQuery } from '@apollo/client'
 import './App.css'
-import { GET_POKEMON_LIST } from './graphql/queries/getPokemonsList'
+import { GET_EVOLUTION_CHAIN } from './graphql/queries/getEvolutionChain'
+import { GET_POKEMON_DETAIL } from './graphql/queries/getPokemonDetail'
+
 
 
 function App() {
-  const { data} = useQuery(GET_POKEMON_LIST)
-  console.log(data)
+  const { data: pokemonDetailData} = useQuery(GET_POKEMON_DETAIL, {
+    variables: { pokemonId: 5 }
+  })
+
+
+  const evolutionChainId = pokemonDetailData?.pokemon?.[0]?.specy?.evolution?.[0]?.evolution_chain_id;
+  console.log("evolutionChainId", evolutionChainId)
+
+
+  const { data: evolutionData } = useQuery(GET_EVOLUTION_CHAIN, {
+     variables: { evolutionChainId },
+     skip: !evolutionChainId // evolutionChainId가 없으면 쿼리 스킵
+   });
+
+  console.log("evolutionData", evolutionData)
 
 
   return (
