@@ -19,7 +19,7 @@ export const GET_POKEMON_DETAIL = gql`
           evolves_from_species_id
         }
 
-        name: pokemon_v2_pokemonspeciesnames(where: {language_id: {_eq: 3}}) {
+        korean: pokemon_v2_pokemonspeciesnames(where: {language_id: {_eq: 3}}) {
           name
           genus
         }
@@ -30,17 +30,17 @@ export const GET_POKEMON_DETAIL = gql`
         }
       }
 
-      ability: pokemon_v2_pokemonabilities {
-        pokemon_v2_ability {
-          pokemon_v2_abilitynames(where: {language_id: {_eq: 3}}) {
+      abilities: pokemon_v2_pokemonabilities {
+        ability: pokemon_v2_ability {
+          korean: pokemon_v2_abilitynames(where: {language_id: {_eq: 3}}) {
             name
           }
         }
       }
 
-      type: pokemon_v2_pokemontypes {
-        pokemon_v2_type {
-          pokemon_v2_typenames(where: {language_id: {_eq: 3}}) {
+      types: pokemon_v2_pokemontypes {
+        type: pokemon_v2_type {
+          korean: pokemon_v2_typenames(where: {language_id: {_eq: 3}}) {
             name
           }
         }

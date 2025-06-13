@@ -58783,21 +58783,21 @@ export type GetMultiplePokemonKoreanQueryVariables = Exact<{
 }>;
 
 
-export type GetMultiplePokemonKoreanQuery = { __typename?: 'query_root', pokemon: Array<{ __typename?: 'pokemon_v2_pokemon', id: number, pokemon_v2_pokemonsprites: Array<{ __typename?: 'pokemon_v2_pokemonsprites', sprites: any }>, pokemon_v2_pokemonspecy?: { __typename?: 'pokemon_v2_pokemonspecies', pokemon_v2_pokemonspeciesnames: Array<{ __typename?: 'pokemon_v2_pokemonspeciesname', name: string }> } | null, pokemon_v2_pokemontypes: Array<{ __typename?: 'pokemon_v2_pokemontype', pokemon_v2_type?: { __typename?: 'pokemon_v2_type', pokemon_v2_typenames: Array<{ __typename?: 'pokemon_v2_typename', name: string }> } | null }> }> };
+export type GetMultiplePokemonKoreanQuery = { __typename?: 'query_root', pokemon: Array<{ __typename?: 'pokemon_v2_pokemon', id: number, image: Array<{ __typename?: 'pokemon_v2_pokemonsprites', sprites: any }>, specy?: { __typename?: 'pokemon_v2_pokemonspecies', korean: Array<{ __typename?: 'pokemon_v2_pokemonspeciesname', name: string }> } | null, types: Array<{ __typename?: 'pokemon_v2_pokemontype', type?: { __typename?: 'pokemon_v2_type', korean: Array<{ __typename?: 'pokemon_v2_typename', name: string }> } | null }> }> };
 
 export type GetPokemonDetailKoreanQueryVariables = Exact<{
   pokemonId: Scalars['Int']['input'];
 }>;
 
 
-export type GetPokemonDetailKoreanQuery = { __typename?: 'query_root', pokemon: Array<{ __typename?: 'pokemon_v2_pokemon', id: number, height?: number | null, weight?: number | null, base_experience?: number | null, specy?: { __typename?: 'pokemon_v2_pokemonspecies', evolution: Array<{ __typename?: 'pokemon_v2_pokemonspecies', id: number, name: string, order?: number | null, evolution_chain_id?: number | null, evolves_from_species_id?: number | null }>, name: Array<{ __typename?: 'pokemon_v2_pokemonspeciesname', name: string, genus: string }>, flavor_text: Array<{ __typename?: 'pokemon_v2_pokemonspeciesflavortext', version_id?: number | null, flavor_text: string }> } | null, ability: Array<{ __typename?: 'pokemon_v2_pokemonability', pokemon_v2_ability?: { __typename?: 'pokemon_v2_ability', pokemon_v2_abilitynames: Array<{ __typename?: 'pokemon_v2_abilityname', name: string }> } | null }>, type: Array<{ __typename?: 'pokemon_v2_pokemontype', pokemon_v2_type?: { __typename?: 'pokemon_v2_type', pokemon_v2_typenames: Array<{ __typename?: 'pokemon_v2_typename', name: string }> } | null }> }> };
+export type GetPokemonDetailKoreanQuery = { __typename?: 'query_root', pokemon: Array<{ __typename?: 'pokemon_v2_pokemon', id: number, height?: number | null, weight?: number | null, base_experience?: number | null, specy?: { __typename?: 'pokemon_v2_pokemonspecies', evolution: Array<{ __typename?: 'pokemon_v2_pokemonspecies', id: number, name: string, order?: number | null, evolution_chain_id?: number | null, evolves_from_species_id?: number | null }>, korean: Array<{ __typename?: 'pokemon_v2_pokemonspeciesname', name: string, genus: string }>, flavor_text: Array<{ __typename?: 'pokemon_v2_pokemonspeciesflavortext', version_id?: number | null, flavor_text: string }> } | null, abilities: Array<{ __typename?: 'pokemon_v2_pokemonability', ability?: { __typename?: 'pokemon_v2_ability', korean: Array<{ __typename?: 'pokemon_v2_abilityname', name: string }> } | null }>, types: Array<{ __typename?: 'pokemon_v2_pokemontype', type?: { __typename?: 'pokemon_v2_type', korean: Array<{ __typename?: 'pokemon_v2_typename', name: string }> } | null }> }> };
 
 export type GetEvolutionChainQueryVariables = Exact<{
   evolutionChainId: Scalars['Int']['input'];
 }>;
 
 
-export type GetEvolutionChainQuery = { __typename?: 'query_root', evolution_chain: Array<{ __typename?: 'pokemon_v2_pokemonspecies', id: number, order?: number | null, evolution_chain_id?: number | null, evolves_from_species_id?: number | null, korean_name: Array<{ __typename?: 'pokemon_v2_pokemonspeciesname', name: string }>, english_name: Array<{ __typename?: 'pokemon_v2_pokemonspeciesname', name: string }>, pokemon_data: Array<{ __typename?: 'pokemon_v2_pokemon', id: number, pokemon_v2_pokemonsprites: Array<{ __typename?: 'pokemon_v2_pokemonsprites', sprites: any }>, pokemon_v2_pokemontypes: Array<{ __typename?: 'pokemon_v2_pokemontype', slot: number, pokemon_v2_type?: { __typename?: 'pokemon_v2_type', pokemon_v2_typenames: Array<{ __typename?: 'pokemon_v2_typename', name: string }> } | null }> }> }> };
+export type GetEvolutionChainQuery = { __typename?: 'query_root', evolution_chain: Array<{ __typename?: 'pokemon_v2_pokemonspecies', id: number, order?: number | null, evolution_chain_id?: number | null, evolves_from_species_id?: number | null, korean_name: Array<{ __typename?: 'pokemon_v2_pokemonspeciesname', name: string }>, english_name: Array<{ __typename?: 'pokemon_v2_pokemonspeciesname', name: string }>, pokemon_data: Array<{ __typename?: 'pokemon_v2_pokemon', id: number, image: Array<{ __typename?: 'pokemon_v2_pokemonsprites', sprites: any }>, types: Array<{ __typename?: 'pokemon_v2_pokemontype', slot: number, type?: { __typename?: 'pokemon_v2_type', korean: Array<{ __typename?: 'pokemon_v2_typename', name: string }> } | null }> }> }> };
 
 export type SamplePokeApIqueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -58809,17 +58809,17 @@ export const GetMultiplePokemonKoreanDocument = gql`
     query GetMultiplePokemonKorean($limit: Int = 10) {
   pokemon: pokemon_v2_pokemon(limit: $limit, order_by: {id: asc}) {
     id
-    pokemon_v2_pokemonsprites {
+    image: pokemon_v2_pokemonsprites {
       sprites
     }
-    pokemon_v2_pokemonspecy {
-      pokemon_v2_pokemonspeciesnames(where: {language_id: {_eq: 3}}) {
+    specy: pokemon_v2_pokemonspecy {
+      korean: pokemon_v2_pokemonspeciesnames(where: {language_id: {_eq: 3}}) {
         name
       }
     }
-    pokemon_v2_pokemontypes {
-      pokemon_v2_type {
-        pokemon_v2_typenames(where: {language_id: {_eq: 3}}) {
+    types: pokemon_v2_pokemontypes {
+      type: pokemon_v2_type {
+        korean: pokemon_v2_typenames(where: {language_id: {_eq: 3}}) {
           name
         }
       }
@@ -58875,7 +58875,7 @@ export const GetPokemonDetailKoreanDocument = gql`
         evolution_chain_id
         evolves_from_species_id
       }
-      name: pokemon_v2_pokemonspeciesnames(where: {language_id: {_eq: 3}}) {
+      korean: pokemon_v2_pokemonspeciesnames(where: {language_id: {_eq: 3}}) {
         name
         genus
       }
@@ -58888,16 +58888,16 @@ export const GetPokemonDetailKoreanDocument = gql`
         flavor_text
       }
     }
-    ability: pokemon_v2_pokemonabilities {
-      pokemon_v2_ability {
-        pokemon_v2_abilitynames(where: {language_id: {_eq: 3}}) {
+    abilities: pokemon_v2_pokemonabilities {
+      ability: pokemon_v2_ability {
+        korean: pokemon_v2_abilitynames(where: {language_id: {_eq: 3}}) {
           name
         }
       }
     }
-    type: pokemon_v2_pokemontypes {
-      pokemon_v2_type {
-        pokemon_v2_typenames(where: {language_id: {_eq: 3}}) {
+    types: pokemon_v2_pokemontypes {
+      type: pokemon_v2_type {
+        korean: pokemon_v2_typenames(where: {language_id: {_eq: 3}}) {
           name
         }
       }
@@ -58956,13 +58956,13 @@ export const GetEvolutionChainDocument = gql`
     }
     pokemon_data: pokemon_v2_pokemons(limit: 1, order_by: {id: asc}) {
       id
-      pokemon_v2_pokemonsprites {
+      image: pokemon_v2_pokemonsprites {
         sprites
       }
-      pokemon_v2_pokemontypes {
+      types: pokemon_v2_pokemontypes {
         slot
-        pokemon_v2_type {
-          pokemon_v2_typenames(where: {language_id: {_eq: 3}}) {
+        type: pokemon_v2_type {
+          korean: pokemon_v2_typenames(where: {language_id: {_eq: 3}}) {
             name
           }
         }
